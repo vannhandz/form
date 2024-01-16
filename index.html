@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <h1>NEW PRODUCT</h1>
+    <form name="frm">
+        <p>
+            <label>
+                product name
+                <input type="text" name="pname" id="pname"/>
+            </label>
+            <label>
+                quantity <!-- Fix typo: 'quanlity' to 'quantity' -->
+                <input type="text" name="qty" id="qty"/>
+            </label>
+        </p>  
+        <p>
+            <label>
+                unit price
+                <input type="text" name="up" id="up"/>
+            </label>
+            <label>
+                discount
+                <input type="text" name="dc" id="dc"/>
+            </label>
+        </p>
+    </form>
+    <button type="button" onclick="sell()">SELL</button>
+    <button type="button">CANCEL</button>
+    <table id="tbl">
+        <tr>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Discount</th>
+            <th>Subtotal</th>
+        </tr>
+    </table>
+
+    <script type="text/javascript"> 
+        var id = 0;
+        function sell() {
+            id++;
+            var pname = document.getElementById("pname").value;
+            var qty = document.getElementById("qty").value;
+            var price = document.getElementById("up").value;
+            var dc = document.getElementById("dc").value;
+            var sub = qty * price * (1 - dc / 100);
+            var row = "<tr>";
+            row += "<td>" + id + "</td>";
+            row += "<td>" + pname + "</td>";
+            row += "<td>" + qty + "</td>";
+            row += "<td>" + price + "</td>";
+            row += "<td>" + dc + "</td>";
+            row += "<td>" + sub + "</td>";
+            row += "</tr>";
+            document.getElementById("tbl").innerHTML += row;
+        }
+    </script>    
+</body>
+</html>
